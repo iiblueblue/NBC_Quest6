@@ -24,7 +24,6 @@ ASpinningBoard::ASpinningBoard()
 void ASpinningBoard::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
 // Called every frame

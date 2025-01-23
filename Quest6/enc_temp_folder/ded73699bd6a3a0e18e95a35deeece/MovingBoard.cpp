@@ -33,7 +33,7 @@ void AMovingBoard::BeginPlay()
 void AMovingBoard::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-	MoveBoard(DeltaTime);
+
 }
 
 // 발판 위치 지정
