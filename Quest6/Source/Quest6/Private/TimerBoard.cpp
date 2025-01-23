@@ -13,6 +13,12 @@ ATimerBoard::ATimerBoard()
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh")); // Static Mesh Component
 	StaticMeshComponent->SetupAttachment(SceneRoot);
 
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Game/Deko_MatrixDemo/Apartment/Meshes/SM_ComputerMonitor_A02_N1.SM_ComputerMonitor_A02_N1"));
+	if (MeshAsset.Succeeded())
+	{
+		StaticMeshComponent->SetStaticMesh(MeshAsset.Object);
+	}
+
 	bIsVisible = true;
 }
 

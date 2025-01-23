@@ -27,7 +27,7 @@ protected:
 	// 변수
 	bool bIsVisible;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "SpinningBoard|Property")
-	float Interval;
+	float Interval = 3.0f;
 	FTimerHandle BoardTimerHandle;
 
 	// 라이프 사이클 함수

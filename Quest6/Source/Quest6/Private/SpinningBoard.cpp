@@ -16,6 +16,12 @@ ASpinningBoard::ASpinningBoard()
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh")); // Static Mesh Component
 	StaticMeshComponent->SetupAttachment(SceneRoot);
 
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Game/Deko_MatrixDemo/Apartment/Meshes/SM_DeskChair_A01_N1.SM_DeskChair_A01_N1"));
+	if (MeshAsset.Succeeded())
+	{
+		StaticMeshComponent->SetStaticMesh(MeshAsset.Object);
+	}
+
 	// 변수 초기화
 	RotationSpeed = 90.0f;
 }

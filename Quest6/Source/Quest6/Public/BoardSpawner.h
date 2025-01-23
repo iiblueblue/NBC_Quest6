@@ -16,11 +16,36 @@ public:
 	ABoardSpawner();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+	// 컴포넌트
+	USceneComponent* SceneComponent;
+	
+	// 변수
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Property")
+	int32 NumberOfBoards = 10;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Property")
+	float SpawnCubeSize = 1000.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Property")
+	float MinDistanceBetweenBoard = 30.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Property")
+	float MaxDistanceBetweenBoard = 40.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Property")
+	float AdditionalHeight = 60.0f;
 
-public:	
-	// Called every frame
+	FVector CenterLocation;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Board")
+	TSubclassOf<AActor> SpinningBoardClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Board")
+	TSubclassOf<AActor> MovingBoardClass;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "BoardSpawner|Board")
+	TSubclassOf<AActor> TimerBoardClass;
+
+	// 라이프 사이클 함수
+	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaTime) override;
+
+	// 일반 함수
+	void SpawnBoard();
+	bool IsLocationWithinBounds(const FVector& Location);
 
 };

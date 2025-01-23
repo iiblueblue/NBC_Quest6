@@ -16,9 +16,15 @@ AMovingBoard::AMovingBoard()
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMesh")); // Static Mesh Component
 	StaticMeshComponent->SetupAttachment(SceneRoot);
 
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> MeshAsset(TEXT("/Game/Deko_MatrixDemo/Apartment/Meshes/SM_Desk_B01_N1.SM_Desk_B01_N1"));
+	if (MeshAsset.Succeeded())
+	{
+		StaticMeshComponent->SetStaticMesh(MeshAsset.Object);
+	}
+
 	// 변수 초기화
-	MovingSpeed = 50.0f;
-	MovingDistance = 10.0f;
+	MovingSpeed = 30.0f;
+	MovingDistance = 50.0f;
 }
 
 // Called when the game starts or when spawned
